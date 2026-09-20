@@ -4,15 +4,20 @@ Utility tecniche da cantiere, progettate mobile-first e offline-first.
 
 ## APK senza PC
 
-Ogni push su `main` avvia automaticamente il workflow **Build Android APK**.
+Ogni push su `main` che modifica l'app avvia automaticamente **Build Android APK**.
 
-Da GitHub su smartphone:
-1. apri **Actions**;
-2. apri l'ultima esecuzione **Build Android APK**;
-3. scarica l'artifact `Utility-Cantiere-v0.01-APK`;
-4. estrai lo ZIP e installa `Utility-Cantiere-v0.01.apk`.
+La build:
+1. genera il progetto Android con Capacitor;
+2. compila l'APK nel cloud con GitHub Actions;
+3. pubblica automaticamente la versione più recente nella Release `latest`.
 
-L'APK viene generato nel cloud con Capacitor. Nessun Android Studio necessario.
+### Download diretto
+
+**Utility-Cantiere.apk**
+
+https://github.com/davidegolisano-design/Utility-cantiere/releases/download/latest/Utility-Cantiere.apk
+
+Non serve Android Studio né un PC.
 
 ## Moduli
 
