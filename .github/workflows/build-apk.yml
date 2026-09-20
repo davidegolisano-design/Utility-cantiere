@@ -11,7 +11,7 @@ on:
       - '.github/workflows/build-apk.yml'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build-apk:
@@ -49,12 +49,19 @@ jobs:
           ./gradlew assembleDebug
 
       - name: Rename APK
-        run: cp android/app/build/outputs/apk/debug/app-debug.apk Utility-Cantiere-v0.01.apk
+        run: cp android/app/build/outputs/apk/debug/app-debug.apk Utility-Cantiere.apk
 
-      - name: Upload APK
+      - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: Utility-Cantiere-v0.01-APK
-          path: Utility-Cantiere-v0.01.apk
+          path: Utility-Cantiere.apk
           if-no-files-found: error
           retention-days: 30
+
+      - name: Publish latest APK release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete latest --cleanup-tag -y || true
+          gh release create latest Utility-Cantiere.apk --target main --title "Utility Cantiere v0.01" --notes "Build automatica APK Android."
