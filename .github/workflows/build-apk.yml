@@ -36,6 +36,9 @@ jobs:
       - name: Install dependencies
         run: npm install --no-audit --no-fund
 
+      - name: Validate JavaScript
+        run: npm run check
+
       - name: Create Android project
         run: npx cap add android
 
@@ -54,7 +57,7 @@ jobs:
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Utility-Cantiere-v0.01-APK
+          name: Utility-Cantiere-v0.02-APK
           path: Utility-Cantiere.apk
           if-no-files-found: error
           retention-days: 30
@@ -64,4 +67,4 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release delete latest --cleanup-tag -y || true
-          gh release create latest Utility-Cantiere.apk --target main --title "Utility Cantiere v0.01" --notes "Build automatica APK Android."
+          gh release create latest Utility-Cantiere.apk --target main --title "Utility Cantiere v0.02" --notes "v0.02: modulo Chiavi e bulloneria operativo, ricerca diretta/inversa e dati metrici ISO/DIN legacy."
