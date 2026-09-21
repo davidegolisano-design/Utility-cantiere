@@ -1,9 +1,10 @@
 {
   "name": "utility-cantiere",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "description": "Utility tecniche da cantiere - PWA e APK Android",
   "scripts": {
+    "check": "node --check www/app.js",
     "android:add": "cap add android",
     "android:sync": "cap sync android",
     "android:build": "cd android && ./gradlew assembleDebug"
