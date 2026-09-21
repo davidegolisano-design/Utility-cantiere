@@ -10,6 +10,10 @@ on:
       - 'capacitor.config.json'
       - '.github/workflows/build-apk.yml'
 
+concurrency:
+  group: utility-cantiere-apk-main
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
